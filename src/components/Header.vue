@@ -7,7 +7,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/vuex">Vuex</router-link> |
-      <router-link to="/blog">Blog</router-link>
+      <router-link to="/blog">Blog</router-link> |
+      <router-link to="/form">Form</router-link>
     </div>
   </div>
 </template>
@@ -18,7 +19,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 div.header {
   background-color: coral;
   display: flex;
@@ -26,11 +27,14 @@ div.header {
   align-items: center;
   padding: 25px 20px;
 }
+  a {
+    font-size: 20px;
+  }
 div.titulo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 div.titulo img {
-    width: 25px;
+  width: 25px;
 }
 </style>

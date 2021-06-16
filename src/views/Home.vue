@@ -9,3 +9,9 @@ export default {
   name: 'Home',
 }
 </script>
+
+<style  scoped>
+  div.home {
+    height: 100vh;
+  }
+</style>

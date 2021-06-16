@@ -20,6 +20,16 @@ const routes = [
     name: 'Blog',
     component: () => import(/* webpackChunkName: "about" */ '../views/Blog.vue')
   },
+  {
+    path: '/blog/:id',
+    name: 'Articulo',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Articulo.vue')
+  },
+  {
+    path: '/form',
+    name: 'Form',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Form.vue')
+  },
 
 ]
 

@@ -5,22 +5,30 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 500
+    count: 500,
+    articulos: []
   },
   mutations: {
-    aumentar (state, payload) {
+    incrementar (state, payload) {
       state.count = state.count + payload
     },
     disminuir (state, payload) {
       state.count = state.count - payload
+    },
+    setearArticulos(state, array) {
+      state.articulos = array
     }
   },
   actions: {
-    aumentar ({commit}, num) {
-      commit('aumentar', num)
+    accionBoton ({commit}, objeto) {
+      if(objeto.estado) {
+        commit('incrementar', objeto.numero)
+      } else {
+        commit('disminuir', objeto.numero)
+      }
     },
-    disminuir ({commit}, num) {
-      commit('disminuir', num)
+    consumirApi({commit}, array){
+      commit('setearArticulos', array)
     }
   },
   modules: {

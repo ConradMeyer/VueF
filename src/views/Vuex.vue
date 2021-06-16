@@ -3,21 +3,19 @@
     <h1>This page is to play with Vuex</h1>
     <h3>Your count is</h3>
     <p>{{ count }}</p>
-    <button @click="aumentar(100)">Aumentar</button>
-    <button @click="disminuir(100)">Disminuir</button>
+    <Boton :estado="true" />
+    <Boton :estado="false" />
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import Boton from '../components/Boton.vue'
+import { mapState } from "vuex";
 
 export default {
   name: "Vuex",
-  methods: {
-    ...mapActions([
-      "aumentar",
-      "disminuir"
-      ]),
+  components: {
+    Boton
   },
   computed: {
     ...mapState([
@@ -33,13 +31,5 @@ export default {
   }
   h1 {
     margin: 20px auto;
-  }
-  button {
-    margin: 20px;
-    border-radius: 15px;
-    border: none;
-    background-color: white;
-    padding: 8px 20px;
-    box-shadow: 5px 5px 20px -3px black;
   }
 </style>
