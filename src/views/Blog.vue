@@ -41,22 +41,20 @@ export default {
 <style lang="scss" scoped>
 div.blog {
   min-height: 100vh;
-  background-color: whitesmoke;
-}
-h1 {
-  margin: 20px auto;
-}
-.articulos {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 10%;
-}
+  padding: 20px;
+  background-color: #2c3e50d2;
+  color: whitesmoke;
+  .articulos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   a {
     text-decoration: none;
-    color: #2c3e50;
+    color: whitesmoke;
   }
   h4 {
     margin: 10px auto;
   }
+}
 </style>

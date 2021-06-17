@@ -25,7 +25,7 @@ export default {
 <style scoped>
     button {
     margin: 20px;
-    border-radius: 15px;
+    border-radius: 25px;
     border: none;
     background-color: white;
     padding: 8px 20px;

@@ -1,8 +1,8 @@
 <template>
   <div class="vuex">
     <h1>This page is to play with Vuex</h1>
-    <h3>Your count is</h3>
-    <p>{{ count }}</p>
+    <h3>Your count is:</h3>
+    <h3>{{ count }}</h3>
     <Boton :estado="true" />
     <Boton :estado="false" />
   </div>
@@ -25,11 +25,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   div.vuex {
     height: 100vh;
-  }
-  h1 {
-    margin: 20px auto;
+    color: whitesmoke;
+    padding: 20px;
+    background-color: #2c3e50d2;
+    h1 {
+      text-decoration: underline;
+    }
   }
 </style>
