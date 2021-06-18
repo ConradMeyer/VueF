@@ -1,6 +1,6 @@
 <template>
   <div class="tareas">
-    <h2>Lista de Tareas</h2>
+    <h2>Tareas</h2>
     <table class="table">
       <thead>
         <tr>

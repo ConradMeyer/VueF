@@ -1,13 +1,14 @@
 <template>
   <div class="blog">
-    <h1>Characters Rick & Morty</h1>
-    <div class="articulos">
+    <h1>Characters from Rick & Morty</h1>
+    <div v-if="articulos.length > 0" class="articulos">
       <div v-for="item in articulos" :key="item.id">
         <router-link :to="`/blog/${item.id}`">
-          <h4 class="articulo">{{ item.id }} - {{ item.name }}</h4>
+          <h3 class="articulo btn btn-primary btn-lg">{{ item.name }}</h3>
         </router-link>
       </div>
     </div>
+    <h4 v-else>No hay resultados</h4>
   </div>
 </template>
 
@@ -25,7 +26,6 @@ export default {
         const data = await fetch("http://localhost:3000/results");
         const result = await data.json();
         this.consumirApi(result);
-        console.log(result);
       } catch (error) {
         console.log(error);
       }
@@ -46,15 +46,17 @@ div.blog {
   color: whitesmoke;
   .articulos {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  a {
-    text-decoration: none;
-    color: whitesmoke;
-  }
-  h4 {
-    margin: 10px auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px auto;
+    .articulo {
+      margin: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: whitesmoke;
+    }
   }
 }
 </style>

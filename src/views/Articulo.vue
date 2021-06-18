@@ -6,14 +6,37 @@
       <h4>Status: {{ this.articulo.status }}</h4>
       <h4>Species: {{ this.articulo.species }}</h4>
       <h4>Gender: {{ this.articulo.gender }}</h4>
-      <h4 class="btn">
-        <router-link to="/blog">Atras</router-link>
+      <h4 class="btn btn-primary mt-2 btn-sm">
+        <router-link to="/blog">Blog</router-link>
       </h4>
+      <h4 class="btn btn-secondary m-2 p btn-sm">
+        <router-link to="/fav">Favs</router-link>
+      </h4>
+      <h4
+        v-if="botones"
+        class="btn btn-danger mt-2 btn-sm"
+        @click="deleteFav(articulo.id)"
+      >
+        Delete
+      </h4>
+      <h4
+        v-else
+        class="btn btn-warning mt-2 btn-sm"
+        @click="saveFav(articulo.id)"
+      >
+        Save
+      </h4>
+      <!-- <div v-else>
+        <Boton :prueba="prueba"/>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+import Boton from "../components/Boton.vue";
+
 export default {
   name: "Articulo",
   data() {
@@ -21,7 +44,21 @@ export default {
       articulo: {},
     };
   },
+  components: {
+    Boton,
+  },
+  computed: {
+    ...mapState(["fav"]),
+    botones() {
+      let result = this.fav.find(
+        (item) => item.id === Number(this.$route.params.id)
+      );
+      return result ? result : false;
+    },
+  },
   methods: {
+    ...mapActions(["saveFav", "deleteFav"]),
+
     async consumirArt() {
       try {
         const data = await fetch(
@@ -29,10 +66,13 @@ export default {
         );
         const result = await data.json();
         this.articulo = result;
-        console.log(result);
       } catch (error) {
         console.log(error);
       }
+    },
+
+    prueba() {
+      console.log("prueba correcta");
     },
   },
   created() {
@@ -56,16 +96,10 @@ div.personaje {
   background-color: whitesmoke;
 
   h4.btn {
-    margin: 15px auto;
-    text-decoration: none;
-    background-color: white;
-    padding: 5px 15px;
-    border-radius: 15px;
-    width: 80%;
-    box-shadow: 5px 5px 20px -3px black;
+    width: 30%;
     a {
       text-decoration: none;
-      color: #2c3e50;
+      color: white;
     }
   }
   h4.btn:hover {

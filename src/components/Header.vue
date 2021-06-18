@@ -6,8 +6,8 @@
     </div>
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/vuex">Vuex</router-link> |
       <router-link to="/blog">API</router-link> |
+      <router-link to="/fav">Fav</router-link> |
       <router-link to="/form">Form</router-link>
     </div>
   </div>

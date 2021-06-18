@@ -11,14 +11,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/vuex',
-    name: 'Vuex',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Vuex.vue')
-  },
-  {
     path: '/blog',
     name: 'Blog',
     component: () => import(/* webpackChunkName: "about" */ '../views/Blog.vue')
+  },
+  {
+    path: '/fav',
+    name: 'Fav',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Fav.vue')
   },
   {
     path: '/blog/:id',

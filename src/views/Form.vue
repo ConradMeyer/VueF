@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <h1>Formularios con Vue.js</h1>
+    <h1>Lista de Tareas con Vue.js</h1>
     <form @submit.prevent="procesarFormulario">
       <Input :tarea="tarea" />
     </form>

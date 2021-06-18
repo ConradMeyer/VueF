@@ -1,34 +1,15 @@
 <template>
-  <button @click="accionBoton({estado: estado, numero: 50 })">{{ textoBoton }}</button>
+  <button @click="prueba" class="btn btn-warning mt-2 btn-md">
+    Prueba
+  </button>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
+    name: "Boton",
     props: {
-        estado: Boolean
-    },
-    computed: {
-        textoBoton() {
-            return this.estado ? "Aumentar" : "Disminuir"
-        }
-    },
-    methods: {
-        ...mapActions([
-            'accionBoton'
-        ])
+        prueba: Function
     }
+
 }
 </script>
-
-<style scoped>
-    button {
-    margin: 20px;
-    border-radius: 25px;
-    border: none;
-    background-color: white;
-    padding: 8px 20px;
-    box-shadow: 5px 5px 20px -3px black;
-  }
-</style>

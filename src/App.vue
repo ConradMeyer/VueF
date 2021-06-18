@@ -11,10 +11,10 @@ import { mapActions } from "vuex";
 
 export default {
   components: {
-    Header
+    Header,
   },
   methods: {
-    ...mapActions(['cargarLocal'])
+    ...mapActions(['cargarLocal']),
   },
   created(){
     this.cargarLocal()

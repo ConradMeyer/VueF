@@ -6,8 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 500,
     articulos: [],
+    fav: [],
     tareas: [],
     tarea: {
       id: "",
@@ -18,17 +18,12 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    cargar(state, payload){
+    cargar(state, payload) {
       state.tareas = payload
-    },
-    incrementar(state, payload) {
-      state.count = state.count + payload
-    },
-    disminuir(state, payload) {
-      state.count = state.count - payload
     },
     setearArticulos(state, array) {
       state.articulos = array
+      state.fav = JSON.parse(localStorage.getItem('Favs'))
     },
     setearTareas(state, payload) {
       state.tareas.push(payload)
@@ -49,11 +44,25 @@ export default new Vuex.Store({
       state.tareas = state.tareas.map(item => item.id === payload.id ? payload : item)
       localStorage.setItem('tareas', JSON.stringify(state.tareas))
       router.push('/form')
+    },
+    saveFav(state, payload) {
+      console.log('aqui');
+      state.fav.push(state.articulos.find(item => item.id === payload))
+      localStorage.setItem('Favs', JSON.stringify(state.fav))
+      router.push('/blog')
+    },
+    cargarFav(state, payload) {
+      state.fav = payload
+    },
+    deleteFav(state, payload) {
+      state.fav = state.fav.filter(item => item.id !== payload)
+      localStorage.setItem('Favs', JSON.stringify(state.fav))
+      router.push('/blog')
     }
   },
   actions: {
-    cargarLocal({commit}) {
-      if(localStorage.getItem('tareas')){
+    cargarLocal({ commit }) {
+      if (localStorage.getItem('tareas')) {
         commit('cargar', JSON.parse(localStorage.getItem('tareas')))
         return
       }
@@ -81,6 +90,20 @@ export default new Vuex.Store({
     },
     updateTarea({ commit }, tarea) {
       commit('editar', tarea)
+    },
+    saveFav({ commit }, id) {
+      commit('saveFav', id)
+    },
+    getFav({ commit }) {
+      if (localStorage.getItem('Favs')) {
+        commit('cargarFav', JSON.parse(localStorage.getItem('Favs')))
+        return
+      }
+
+      localStorage.setItem('Favs', JSON.stringify([]))
+    },
+    deleteFav({ commit }, id) {
+      commit('deleteFav', id)
     }
   },
   modules: {
