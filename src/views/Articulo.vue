@@ -62,7 +62,7 @@ export default {
     async consumirArt() {
       try {
         const data = await fetch(
-          `http://localhost:3000/results/${this.$route.params.id}`
+          `https://rickandmortyapi.com/api/character/${this.$route.params.id}`
         );
         const result = await data.json();
         this.articulo = result;
@@ -84,6 +84,7 @@ export default {
 <style lang="scss" scoped>
 div.articulo {
   background-color: #2c3e50d2;
+  min-height: 85vh;
   padding: 20px;
 }
 div.personaje {

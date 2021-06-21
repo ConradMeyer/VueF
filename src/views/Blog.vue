@@ -1,6 +1,15 @@
 <template>
   <div class="blog">
-    <h1>Characters from Rick & Morty</h1>
+    <h1>Rick & Morty API</h1>
+    <div class="buscador">
+      <input
+        type="text"
+        class="form-control my-2 barra"
+        placeholder="Busca aquí tu personaje de Rick & Morty"
+        v-model="keyword"
+      />
+      <button class="btn btn-dark mt-3 btn-block" @click="buscar()">BUSCAR</button>
+    </div>
     <div v-if="articulos.length > 0" class="articulos">
       <div v-for="item in articulos" :key="item.id">
         <router-link :to="`/blog/${item.id}`">
@@ -17,6 +26,11 @@ import { mapActions, mapState } from "vuex";
 
 export default {
   name: "Blog",
+  data() {
+    return {
+      keyword: ""
+    }
+  },
   computed: {
     ...mapState(["articulos"]),
   },
@@ -30,10 +44,20 @@ export default {
         console.log(error);
       }
     },
+    async buscar() {
+      try {
+        const data = await fetch(`https://rickandmortyapi.com/api/character/?name=${this.keyword}`);
+        const result = await data.json();
+        this.consumirApi(result.results);
+        console.log(result.results);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     ...mapActions(["consumirApi"]),
   },
   created() {
-    this.llamada();
+    // this.llamada();
   },
 };
 </script>
@@ -44,10 +68,14 @@ div.blog {
   padding: 20px;
   background-color: #2c3e50d2;
   color: whitesmoke;
+  div.buscador {
+    width: 40%;
+    margin: 20px auto;
+  }
   .articulos {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     width: 80%;
     margin: 20px auto;
     .articulo {

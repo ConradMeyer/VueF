@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <!-- <Header /> -->
+
     <h1>New Project with Vue.js</h1>
     <img src="../assets/logo.png" alt="logo-vue" />
     <!-- <Taildwind /> -->
@@ -8,10 +10,12 @@
 
 <script>
 import Taildwind from '../components/Tailwind.vue'
+import Header from '../components/Header.vue'
 export default {
   name: 'Home',
   components: {
-    Taildwind
+    Taildwind,
+    Header
   }
 }
 </script>

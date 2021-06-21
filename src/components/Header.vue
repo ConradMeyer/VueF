@@ -8,7 +8,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/blog">API</router-link> |
       <router-link to="/fav">Fav</router-link> |
-      <router-link to="/form">Form</router-link>
+      <router-link to="/form">Form</router-link> |
+      <router-link to="/sign">Sign</router-link>
     </div>
   </div>
 </template>
