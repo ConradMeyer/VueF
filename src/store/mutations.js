@@ -31,7 +31,6 @@ export default {
         router.push('/form')
     },
     [types.GUARDAR_FAVORITO](state, payload) {
-        console.log('aqui');
         state.fav.push(state.articulos.find(item => item.id === payload))
         localStorage.setItem('Favs', JSON.stringify(state.fav))
         router.push('/blog')
